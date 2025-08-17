@@ -40,28 +40,24 @@ const Footer = () => {
               gap: '16px',
               marginBottom: '24px'
             }}>
-              {/* Playful XOLO Mark */}
+              {/* Clean X Icon */}
               <div style={{
                 width: '52px',
                 height: '52px',
                 background: 'var(--banana)',
-                borderRadius: '14px',
+                borderRadius: '10px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transform: 'rotate(-8deg)',
                 transition: 'all 0.3s ease'
               }}
               className="animate-wiggle"
               >
-                <span style={{
-                  color: 'var(--soft-black)',
-                  fontSize: '22px',
-                  fontWeight: '900',
-                  fontFamily: 'var(--font-quirky)'
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{
+                  color: 'var(--soft-black)'
                 }}>
-                  X
-                </span>
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
               
               <span style={{
