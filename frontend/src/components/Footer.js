@@ -105,7 +105,7 @@ const Footer = () => {
               flexDirection: 'column',
               gap: '12px'
             }}>
-              {['Banana Shock', 'Citrus Blast', 'Berry Rush', 'Tropical Storm', 'Extreme'].map((flavor, index) => (
+              {['Banana Shock', 'Citrus Blast', 'Berry Rush', 'Extreme'].map((flavor, index) => (
                 <a
                   key={flavor}
                   href="#"
