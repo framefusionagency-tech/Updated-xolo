@@ -17,7 +17,7 @@ const Newsletter = () => {
     setTimeout(() => {
       toast({
         title: mockData.newsletter.success,
-        description: "You're now part of the pack. Get ready for exclusive updates and early access to new flavors.",
+        description: "Thanks for joining! You'll hear from us soon (in a good way).",
         duration: 5000,
       });
       
@@ -28,102 +28,72 @@ const Newsletter = () => {
 
   return (
     <section className="section" style={{
-      background: 'var(--primary-white)',
+      background: 'var(--cream)',
       position: 'relative'
     }}>
-      <div className="container">
+      {/* Fun Background Pattern */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: `
+          radial-gradient(circle at 20% 20%, var(--berry)12 0%, transparent 40%),
+          radial-gradient(circle at 80% 80%, var(--tropical)12 0%, transparent 40%)
+        `,
+        opacity: 0.8
+      }} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{
-          maxWidth: '600px',
+          maxWidth: '700px',
           margin: '0 auto',
           textAlign: 'center'
         }}>
-          {/* Newsletter Card */}
-          <div className="card" style={{
-            background: 'var(--primary-white)',
-            border: '2px solid var(--aztec-gold)',
-            borderRadius: '20px',
-            padding: '60px 40px',
+          <div className="card-minimal" style={{
+            background: 'var(--white)',
+            borderRadius: '32px',
+            border: '3px solid var(--soft-black)',
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Aztec Border Pattern */}
+            {/* Decorative Corner Elements */}
             <div style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '4px',
-              background: `
-                repeating-linear-gradient(
-                  90deg,
-                  var(--aztec-gold),
-                  var(--aztec-gold) 20px,
-                  transparent 20px,
-                  transparent 40px
-                )
-              `
+              top: '-10px',
+              left: '-10px',
+              width: '40px',
+              height: '40px',
+              background: 'var(--banana)',
+              borderRadius: '50%',
+              transform: 'rotate(-15deg)'
             }} />
             
             <div style={{
               position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: '4px',
-              background: `
-                repeating-linear-gradient(
-                  90deg,
-                  var(--aztec-gold),
-                  var(--aztec-gold) 20px,
-                  transparent 20px,
-                  transparent 40px
-                )
-              `
+              top: '-5px',
+              right: '-5px',
+              width: '30px',
+              height: '30px',
+              background: 'var(--citrus)',
+              borderRadius: '6px',
+              transform: 'rotate(25deg)'
             }} />
 
             {/* Header */}
-            <div style={{ marginBottom: '40px' }}>
-              {/* Xolo Icon */}
-              <div style={{
-                width: '60px',
-                height: '48px',
-                background: 'var(--text-dark)',
-                borderRadius: '30px 30px 15px 15px',
-                position: 'relative',
-                margin: '0 auto 20px'
-              }}>
-                {/* Dog ears */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-6px',
-                  left: '12px',
-                  width: '12px',
-                  height: '12px',
-                  background: 'var(--text-dark)',
-                  borderRadius: '6px 6px 0 0',
-                  transform: 'rotate(-10deg)'
-                }} />
-                <div style={{
-                  position: 'absolute',
-                  top: '-6px',
-                  right: '12px',
-                  width: '12px',
-                  height: '12px',
-                  background: 'var(--text-dark)',
-                  borderRadius: '6px 6px 0 0',
-                  transform: 'rotate(10deg)'
-                }} />
-              </div>
-
-              <h2 className="section-headline" style={{
-                fontSize: '32px',
-                marginBottom: '16px'
+            <div style={{ marginBottom: '30px' }}>
+              <h2 className="display-large" style={{
+                fontSize: 'clamp(28px, 5vw, 48px)',
+                marginBottom: '12px',
+                color: 'var(--soft-black)'
               }}>
                 {mockData.newsletter.headline}
               </h2>
               
-              <p className="body-medium" style={{
-                color: 'var(--text-medium)'
+              <p className="heading-editorial" style={{
+                fontSize: '18px',
+                color: 'var(--charcoal)'
               }}>
                 {mockData.newsletter.subline}
               </p>
@@ -133,35 +103,38 @@ const Newsletter = () => {
             <form onSubmit={handleSubmit} style={{
               display: 'flex',
               gap: '16px',
-              marginBottom: '30px',
-              flexWrap: 'wrap'
+              marginBottom: '24px',
+              flexWrap: 'wrap',
+              justifyContent: 'center'
             }}>
-              <div style={{ flex: '1', minWidth: '250px' }}>
+              <div style={{ flex: '1', minWidth: '250px', maxWidth: '350px' }}>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
+                  placeholder="your.email@example.com"
                   required
                   style={{
                     width: '100%',
                     padding: '16px 20px',
-                    background: 'var(--warm-grey)',
-                    border: '2px solid var(--accent-grey)',
-                    borderRadius: '12px',
-                    color: 'var(--text-dark)',
+                    background: 'var(--light-grey)',
+                    border: '2px solid transparent',
+                    borderRadius: '25px',
+                    color: 'var(--soft-black)',
                     fontSize: '16px',
-                    fontFamily: 'var(--font-primary)',
+                    fontFamily: 'var(--font-sans)',
                     transition: 'all 0.3s ease',
                     outline: 'none'
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = 'var(--aztec-gold)';
-                    e.target.style.background = 'var(--primary-white)';
+                    e.target.style.borderColor = 'var(--banana)';
+                    e.target.style.background = 'var(--white)';
+                    e.target.style.transform = 'scale(1.02)';
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = 'var(--accent-grey)';
-                    e.target.style.background = 'var(--warm-grey)';
+                    e.target.style.borderColor = 'transparent';
+                    e.target.style.background = 'var(--light-grey)';
+                    e.target.style.transform = 'scale(1)';
                   }}
                 />
               </div>
@@ -173,66 +146,121 @@ const Newsletter = () => {
                 style={{
                   minWidth: '140px',
                   opacity: isSubmitting ? 0.7 : 1,
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  background: 'var(--soft-black)',
+                  padding: '16px 24px'
                 }}
               >
-                {isSubmitting ? 'Joining...' : 'Join Tribe'}
+                {isSubmitting ? 'Joining...' : 'Count Me In'}
+                <span style={{ fontSize: '16px' }}>
+                  {isSubmitting ? '⏳' : '✨'}
+                </span>
               </button>
             </form>
 
             {/* Footer Text */}
-            <p className="body-small" style={{
-              color: 'var(--text-light)',
-              lineHeight: '1.4'
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
             }}>
-              No spam, just energy. Unsubscribe anytime.
-            </p>
+              <span className="body-small">
+                We promise not to spam you
+              </span>
+              <span style={{ fontSize: '16px' }}>🤝</span>
+            </div>
 
-            {/* Decorative Aztec Elements */}
+            {/* Bottom Decorative Elements */}
             <div style={{
               position: 'absolute',
-              top: '30px',
-              left: '30px',
-              width: '20px',
-              height: '20px',
-              background: 'var(--aztec-gold)',
-              borderRadius: '2px',
-              transform: 'rotate(45deg)',
-              opacity: 0.3
+              bottom: '-8px',
+              left: '20%',
+              width: '25px',
+              height: '25px',
+              background: 'var(--berry)',
+              borderRadius: '50%'
             }} />
             
             <div style={{
               position: 'absolute',
-              top: '30px',
-              right: '30px',
+              bottom: '-6px',
+              right: '25%',
               width: '20px',
               height: '20px',
-              background: 'var(--aztec-gold)',
-              borderRadius: '2px',
-              transform: 'rotate(45deg)',
-              opacity: 0.3
+              background: 'var(--tropical)',
+              borderRadius: '4px',
+              transform: 'rotate(45deg)'
             }} />
+          </div>
+
+          {/* Social Proof */}
+          <div style={{
+            marginTop: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '30px',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ textAlign: 'center' }}>
+              <div className="heading-playful" style={{ 
+                fontSize: '24px',
+                color: 'var(--banana)',
+                marginBottom: '4px'
+              }}>
+                2.5K+
+              </div>
+              <div className="body-small">Happy Sippers</div>
+            </div>
+            
+            <div style={{ textAlign: 'center' }}>
+              <div className="heading-playful" style={{ 
+                fontSize: '24px',
+                color: 'var(--citrus)',
+                marginBottom: '4px'
+              }}>
+                4.8★
+              </div>
+              <div className="body-small">Average Rating</div>
+            </div>
+            
+            <div style={{ textAlign: 'center' }}>
+              <div className="heading-playful" style={{ 
+                fontSize: '24px',
+                color: 'var(--berry)',
+                marginBottom: '4px'
+              }}>
+                99%
+              </div>
+              <div className="body-small">Would Recommend</div>
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
         input::placeholder {
-          color: var(--text-light);
+          color: var(--medium-grey);
         }
         
         @media (max-width: 768px) {
-          .card {
-            padding: 40px 24px !important;
+          .card-minimal {
+            padding: 30px 24px !important;
           }
           
           form {
             flex-direction: column !important;
-            align-items: stretch;
+            align-items: center;
           }
           
           form input {
             min-width: 100% !important;
+            max-width: 100% !important;
+          }
+          
+          .social-proof {
+            gap: 20px !important;
           }
         }
       `}</style>
