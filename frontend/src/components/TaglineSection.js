@@ -170,7 +170,7 @@ const TaglineSection = () => {
             margin: '0 auto'
           }}>
             {[
-              { number: '5', label: 'Bold Flavors', emoji: '🎯' },
+              { number: '4', label: 'Bold Flavors', emoji: '🎯' },
               { number: '0', label: 'Weird Aftertaste', emoji: '🚫' },
               { number: '∞', label: 'Good Vibes', emoji: '✨' }
             ].map((fact, index) => (
