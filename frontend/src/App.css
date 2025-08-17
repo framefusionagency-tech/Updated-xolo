@@ -18,10 +18,8 @@
   --citrus-light: #ffe8e0;
   --berry: #8b5cf6;
   --berry-light: #ede9fe;
-  --tropical: #10b981;
-  --tropical-light: #d1fae5;
-  --extreme: #ef4444;
-  --extreme-light: #fee2e2;
+  --extreme: #1a1a1a;
+  --extreme-light: #ffd700;
   
   /* Typography Stack */
   --font-serif: 'Playfair Display', serif;
