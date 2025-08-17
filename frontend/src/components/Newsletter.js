@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useToast } from '../hooks/use-toast';
+import { mockData } from '../data/mock';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -15,8 +16,8 @@ const Newsletter = () => {
     // Mock submission delay
     setTimeout(() => {
       toast({
-        title: "Welcome to the Tribe",
-        description: "The ancient energy awakens within you. Check your email for what comes next.",
+        title: mockData.newsletter.success,
+        description: "You're now part of the pack. Get ready for exclusive updates and early access to new flavors.",
         duration: 5000,
       });
       
@@ -26,61 +27,110 @@ const Newsletter = () => {
   };
 
   return (
-    <section id="newsletter" className="newsletter stone-texture section-padding" style={{
-      background: `
-        linear-gradient(180deg, var(--obsidian) 0%, #0F1219 100%)
-      `,
+    <section className="section" style={{
+      background: 'var(--primary-white)',
       position: 'relative'
     }}>
-      <div className="temple-container">
-        <div className="newsletter-content" style={{
+      <div className="container">
+        <div style={{
           maxWidth: '600px',
           margin: '0 auto',
-          textAlign: 'center',
-          position: 'relative',
-          zIndex: 2
+          textAlign: 'center'
         }}>
           {/* Newsletter Card */}
-          <div className="newsletter-card" style={{
-            background: `
-              linear-gradient(135deg, var(--obsidian-light) 0%, var(--obsidian) 100%)
-            `,
-            borderRadius: '12px',
+          <div className="card" style={{
+            background: 'var(--primary-white)',
+            border: '2px solid var(--aztec-gold)',
+            borderRadius: '20px',
             padding: '60px 40px',
-            boxShadow: `
-              0 20px 60px rgba(0, 0, 0, 0.8),
-              inset 0 1px 0 rgba(185, 197, 214, 0.1)
-            `,
-            border: '1px solid rgba(26, 167, 149, 0.2)',
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Card Glow Effect */}
-            <div className="card-glow" style={{
+            {/* Aztec Border Pattern */}
+            <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              bottom: 0,
+              height: '4px',
               background: `
-                radial-gradient(circle at 50% 0%, var(--jade-glow) 0%, transparent 50%)
-              `,
-              opacity: 0.1,
-              pointerEvents: 'none'
+                repeating-linear-gradient(
+                  90deg,
+                  var(--aztec-gold),
+                  var(--aztec-gold) 20px,
+                  transparent 20px,
+                  transparent 40px
+                )
+              `
+            }} />
+            
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: `
+                repeating-linear-gradient(
+                  90deg,
+                  var(--aztec-gold),
+                  var(--aztec-gold) 20px,
+                  transparent 20px,
+                  transparent 40px
+                )
+              `
             }} />
 
             {/* Header */}
-            <div className="newsletter-header" style={{ marginBottom: '40px' }}>
-              <h2 className="headline-medium" style={{ marginBottom: '16px' }}>
-                Join the Pack
+            <div style={{ marginBottom: '40px' }}>
+              {/* Xolo Icon */}
+              <div style={{
+                width: '60px',
+                height: '48px',
+                background: 'var(--text-dark)',
+                borderRadius: '30px 30px 15px 15px',
+                position: 'relative',
+                margin: '0 auto 20px'
+              }}>
+                {/* Dog ears */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-6px',
+                  left: '12px',
+                  width: '12px',
+                  height: '12px',
+                  background: 'var(--text-dark)',
+                  borderRadius: '6px 6px 0 0',
+                  transform: 'rotate(-10deg)'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '-6px',
+                  right: '12px',
+                  width: '12px',
+                  height: '12px',
+                  background: 'var(--text-dark)',
+                  borderRadius: '6px 6px 0 0',
+                  transform: 'rotate(10deg)'
+                }} />
+              </div>
+
+              <h2 className="section-headline" style={{
+                fontSize: '32px',
+                marginBottom: '16px'
+              }}>
+                {mockData.newsletter.headline}
               </h2>
-              <p className="body-medium" style={{ opacity: 0.9 }}>
-                Ancient wisdom. Modern energy. Delivered to your inbox.
+              
+              <p className="body-medium" style={{
+                color: 'var(--text-medium)'
+              }}>
+                {mockData.newsletter.subline}
               </p>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="newsletter-form" style={{
+            <form onSubmit={handleSubmit} style={{
               display: 'flex',
               gap: '16px',
               marginBottom: '30px',
@@ -91,28 +141,27 @@ const Newsletter = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email to awaken the energy"
+                  placeholder="Enter your email address"
                   required
                   style={{
                     width: '100%',
                     padding: '16px 20px',
-                    background: 'rgba(185, 197, 214, 0.05)',
-                    border: '2px solid rgba(26, 167, 149, 0.3)',
-                    borderRadius: '8px',
-                    color: 'var(--moonlight)',
+                    background: 'var(--warm-grey)',
+                    border: '2px solid var(--accent-grey)',
+                    borderRadius: '12px',
+                    color: 'var(--text-dark)',
                     fontSize: '16px',
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'var(--font-primary)',
                     transition: 'all 0.3s ease',
-                    outline: 'none',
-                    backdropFilter: 'blur(10px)'
+                    outline: 'none'
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = 'var(--jade)';
-                    e.target.style.boxShadow = '0 0 20px var(--jade-glow)';
+                    e.target.style.borderColor = 'var(--aztec-gold)';
+                    e.target.style.background = 'var(--primary-white)';
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = 'rgba(26, 167, 149, 0.3)';
-                    e.target.style.boxShadow = 'none';
+                    e.target.style.borderColor = 'var(--accent-grey)';
+                    e.target.style.background = 'var(--warm-grey)';
                   }}
                 />
               </div>
@@ -120,163 +169,70 @@ const Newsletter = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-primary glow-gold"
+                className="btn-primary"
                 style={{
                   minWidth: '140px',
                   opacity: isSubmitting ? 0.7 : 1,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer'
                 }}
               >
-                {isSubmitting ? 'Joining...' : 'Join'}
-                <span style={{ marginLeft: '8px' }}>
-                  {isSubmitting ? '⏳' : '⚡'}
-                </span>
+                {isSubmitting ? 'Joining...' : 'Join Tribe'}
               </button>
             </form>
 
             {/* Footer Text */}
-            <p className="body-small" style={{ 
-              opacity: 0.7,
+            <p className="body-small" style={{
+              color: 'var(--text-light)',
               lineHeight: '1.4'
             }}>
-              No spam. Just the energy you need when you need it.
+              No spam, just energy. Unsubscribe anytime.
             </p>
 
-            {/* Decorative Elements */}
-            <div className="card-decorations" style={{
+            {/* Decorative Aztec Elements */}
+            <div style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              pointerEvents: 'none'
-            }}>
-              {/* Jade Inlays */}
-              <div style={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                width: '40px',
-                height: '2px',
-                background: 'var(--jade)',
-                boxShadow: '0 0 10px var(--jade-glow)',
-                opacity: 0.6
-              }} />
-              
-              <div style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                width: '40px',
-                height: '2px',
-                background: 'var(--jade)',
-                boxShadow: '0 0 10px var(--jade-glow)',
-                opacity: 0.6
-              }} />
-
-              <div style={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '20px',
-                width: '40px',
-                height: '2px',
-                background: 'var(--gold)',
-                boxShadow: '0 0 10px var(--gold-glow)',
-                opacity: 0.4
-              }} />
-              
-              <div style={{
-                position: 'absolute',
-                bottom: '20px',
-                right: '20px',
-                width: '40px',
-                height: '2px',
-                background: 'var(--gold)',
-                boxShadow: '0 0 10px var(--gold-glow)',
-                opacity: 0.4
-              }} />
-            </div>
+              top: '30px',
+              left: '30px',
+              width: '20px',
+              height: '20px',
+              background: 'var(--aztec-gold)',
+              borderRadius: '2px',
+              transform: 'rotate(45deg)',
+              opacity: 0.3
+            }} />
+            
+            <div style={{
+              position: 'absolute',
+              top: '30px',
+              right: '30px',
+              width: '20px',
+              height: '20px',
+              background: 'var(--aztec-gold)',
+              borderRadius: '2px',
+              transform: 'rotate(45deg)',
+              opacity: 0.3
+            }} />
           </div>
-        </div>
-
-        {/* Background Decorations */}
-        <div className="newsletter-decorations" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 1
-        }}>
-          {/* Temple Torches */}
-          <div className="torch left" style={{
-            position: 'absolute',
-            top: '30%',
-            left: '10%',
-            width: '60px',
-            height: '80px',
-            background: `
-              radial-gradient(ellipse at bottom, var(--ember) 0%, rgba(196, 89, 43, 0.4) 50%, transparent 80%)
-            `,
-            animation: 'ember-flicker 3s ease-in-out infinite'
-          }} />
-          
-          <div className="torch right" style={{
-            position: 'absolute',
-            top: '30%',
-            right: '10%',
-            width: '60px',
-            height: '80px',
-            background: `
-              radial-gradient(ellipse at bottom, var(--ember) 0%, rgba(196, 89, 43, 0.4) 50%, transparent 80%)
-            `,
-            animation: 'ember-flicker 4s ease-in-out infinite'
-          }} />
-
-          {/* Floating Glyphs */}
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="floating-glyph"
-              style={{
-                position: 'absolute',
-                width: '12px',
-                height: '12px',
-                background: i % 2 === 0 ? 'var(--jade)' : 'var(--gold)',
-                borderRadius: '2px',
-                top: `${20 + (i % 3) * 25}%`,
-                left: `${15 + (i % 2) * 70}%`,
-                opacity: 0.3,
-                boxShadow: `0 0 15px ${i % 2 === 0 ? 'var(--jade-glow)' : 'var(--gold-glow)'}`,
-                animation: `float ${4 + i}s ease-in-out infinite ${i * 0.5}s`
-              }}
-            />
-          ))}
         </div>
       </div>
 
       <style jsx>{`
-        .newsletter-form input::placeholder {
-          color: rgba(185, 197, 214, 0.6);
+        input::placeholder {
+          color: var(--text-light);
         }
         
         @media (max-width: 768px) {
-          .newsletter-card {
+          .card {
             padding: 40px 24px !important;
           }
           
-          .newsletter-form {
+          form {
             flex-direction: column !important;
-            align-items: center;
+            align-items: stretch;
           }
           
-          .newsletter-form input {
+          form input {
             min-width: 100% !important;
-          }
-          
-          .torch {
-            display: none !important;
           }
         }
       `}</style>
