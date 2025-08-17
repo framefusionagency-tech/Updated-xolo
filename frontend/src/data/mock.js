@@ -41,17 +41,6 @@ export const mockData = {
     },
     {
       id: 4,
-      name: "Tropical Storm",
-      shortName: "Tropical",
-      tagline: "vacation mode",
-      description: "Pineapple, mango, and coconut walk into an energy drink. This is what happens.",
-      image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/49lsij63_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_31%20PM.png",
-      colorClass: "flavor-tropical",
-      accentColor: "#10b981",
-      price: 2.99
-    },
-    {
-      id: 5,
       name: "Extreme",
       shortName: "Extreme",
       tagline: "no chill",
