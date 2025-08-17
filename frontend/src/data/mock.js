@@ -80,9 +80,9 @@ export const mockData = {
   shop: {
     varietyPack: {
       name: "The Flavor Explorer Pack",
-      description: "Try all 5 flavors and find your favorite. Or keep them all, we won't judge.",
-      price: 13.99,
-      savings: "Save $1.96"
+      description: "Try all 4 flavors and find your favorite. Or keep them all, we won't judge.",
+      price: 11.99,
+      savings: "Save $0.97"
     }
   },
 
