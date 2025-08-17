@@ -3,8 +3,9 @@ import Spline from '@splinetool/react-spline';
 import { mockData } from '../data/mock';
 
 const HeroSection = () => {
+  const [currentCanIndex, setCurrentCanIndex] = useState(0);
+  const [isSplineLoaded, setIsSplineLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [splineLoaded, setSplineLoaded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -16,152 +17,320 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const scrollToFlavors = () => {
-    document.getElementById('flavors')?.scrollIntoView({ behavior: 'smooth' });
+  // Auto-cycle cans every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCanIndex((prev) => (prev + 1) % mockData.cans.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToGallery = () => {
+    document.getElementById('can-gallery')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToNewsletter = () => {
+    document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const currentCan = mockData.cans[currentCanIndex];
+
   return (
-    <section className="hero-section" style={{
+    <section className="hero-section stone-texture" style={{
+      minHeight: '100vh',
       position: 'relative',
-      height: '100vh',
-      background: 'var(--bg-primary)',
-      overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: '80px'
+      background: `
+        radial-gradient(circle at 20% 20%, rgba(26, 167, 149, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(217, 164, 65, 0.08) 0%, transparent 40%),
+        linear-gradient(180deg, var(--obsidian) 0%, #151922 100%)
+      `,
+      overflow: 'hidden'
     }}>
-      {/* Animated Background Grid */}
-      <div className="hero-background" style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: `
-          radial-gradient(circle at 20% 20%, rgba(0, 255, 209, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(0, 139, 139, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 40% 60%, rgba(106, 13, 173, 0.05) 0%, transparent 50%)
-        `,
-        animation: 'gradientShift 8s ease-in-out infinite'
-      }} />
-
-      {/* Spline 3D Background - Only on Desktop */}
+      {/* Spline 3D Background - Desktop Only */}
       {!isMobile && (
-        <div className="spline-container" style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '50%',
-          height: '100%',
-          opacity: splineLoaded ? 0.6 : 0,
-          transition: 'opacity 1s ease-in-out',
-          overflow: 'hidden'
-        }}>
-          <Spline
-            scene="https://prod.spline.design/NbVmy6DPLhY-5Lvg/scene.splinecode"
-            onLoad={() => setSplineLoaded(true)}
-            style={{
-              width: '700px',
-              height: '700px',
-              position: 'relative',
-              overflow: 'visible'
-            }}
-          />
-        </div>
-      )}
-
-      {/* Canvas Fallback for Mobile */}
-      {isMobile && (
-        <div className="mobile-particles" style={{
+        <div className="spline-background" style={{
           position: 'absolute',
           top: 0,
           left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle at 30% 30%, rgba(0, 255, 209, 0.2) 0%, transparent 30%),
-            radial-gradient(circle at 70% 70%, rgba(106, 13, 173, 0.2) 0%, transparent 30%)
-          `,
-          animation: 'mobileFloat 6s ease-in-out infinite'
-        }} />
-      )}
-
-      {/* Main Content */}
-      <div className="hero-content" style={{
-        position: 'relative',
-        zIndex: 2,
-        textAlign: 'center',
-        maxWidth: '1200px',
-        padding: '0 20px'
-      }}>
-        {/* Hero Text */}
-        <div className="hero-text" style={{ marginBottom: '60px' }}>
-          <h1 className="display-huge glow-text" style={{ 
-            marginBottom: '20px',
-            textShadow: '0 0 30px rgba(0, 255, 209, 0.8)'
-          }}>
-            {mockData.hero.mainTitle}
-          </h1>
-          <p className="display-medium" style={{ 
-            marginBottom: '40px',
-            color: 'var(--text-secondary)'
-          }}>
-            {mockData.hero.subtitle}
-          </p>
-          <button 
-            className="btn-primary"
-            onClick={scrollToFlavors}
-            style={{
-              fontSize: '20px',
-              padding: '18px 36px',
-              minHeight: '64px'
-            }}
-          >
-            {mockData.hero.ctaText}
-            <span style={{ marginLeft: '12px' }}>⚡</span>
-          </button>
-        </div>
-
-        {/* Cans Showcase */}
-        <div className="cans-showcase" style={{
-          position: 'relative',
-          maxWidth: '800px',
-          margin: '0 auto'
+          width: '100%',
+          height: '100%',
+          opacity: isSplineLoaded ? 0.4 : 0,
+          transition: 'opacity 2s ease-in-out',
+          zIndex: 1
         }}>
-          <img 
-            src={mockData.hero.allCansImage}
-            alt="XOLO Energy Drinks"
+          <Spline
+            scene="https://prod.spline.design/NbVmy6DPLhY-5Lvg/scene.splinecode"
+            onLoad={() => setIsSplineLoaded(true)}
             style={{
               width: '100%',
-              height: 'auto',
-              maxHeight: '400px',
-              objectFit: 'contain',
-              filter: 'drop-shadow(0 20px 40px rgba(0, 255, 209, 0.3))',
-              animation: 'canFloat 4s ease-in-out infinite'
+              height: '100%',
+              pointerEvents: 'none'
             }}
           />
+        </div>
+      )}
+
+      {/* Temple Courtyard Elements */}
+      <div className="temple-elements" style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 2,
+        pointerEvents: 'none'
+      }}>
+        {/* Stone Xolo Head (Background) */}
+        <div className="xolo-head" style={{
+          position: 'absolute',
+          top: '10%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '600px',
+          height: '400px',
+          background: `
+            radial-gradient(ellipse at center, rgba(217, 164, 65, 0.3) 0%, transparent 70%),
+            linear-gradient(135deg, var(--obsidian-light) 0%, var(--obsidian) 100%)
+          `,
+          borderRadius: '50% 50% 30% 30%',
+          opacity: 0.6,
+          filter: 'blur(1px)'
+        }}>
+          {/* Glowing Eyes */}
+          <div style={{
+            position: 'absolute',
+            top: '40%',
+            left: '25%',
+            width: '20px',
+            height: '20px',
+            borderRadius: '50%',
+            background: 'var(--gold)',
+            boxShadow: '0 0 30px var(--gold-glow)',
+            animation: 'glow-pulse 4s ease-in-out infinite'
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: '40%',
+            right: '25%',
+            width: '20px',
+            height: '20px',
+            borderRadius: '50%',
+            background: 'var(--gold)',
+            boxShadow: '0 0 30px var(--gold-glow)',
+            animation: 'glow-pulse 4s ease-in-out infinite 2s'
+          }} />
+        </div>
+
+        {/* Jade Inlay Patterns */}
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="jade-inlay"
+            style={{
+              position: 'absolute',
+              width: '2px',
+              height: '60px',
+              background: 'var(--jade)',
+              left: `${15 + i * 12}%`,
+              top: `${20 + Math.sin(i) * 20}%`,
+              transform: `rotate(${i * 15}deg)`,
+              opacity: 0.4,
+              boxShadow: '0 0 10px var(--jade-glow)',
+              animation: `glow-pulse ${3 + i * 0.5}s ease-in-out infinite`
+            }}
+          />
+        ))}
+
+        {/* Ember Torchlight */}
+        <div className="torchlight left" style={{
+          position: 'absolute',
+          top: '20%',
+          left: '5%',
+          width: '80px',
+          height: '120px',
+          background: `
+            radial-gradient(ellipse at bottom, var(--ember) 0%, rgba(196, 89, 43, 0.4) 40%, transparent 70%)
+          `,
+          animation: 'ember-flicker 3s ease-in-out infinite'
+        }} />
+        
+        <div className="torchlight right" style={{
+          position: 'absolute',
+          top: '20%',
+          right: '5%',
+          width: '80px',
+          height: '120px',
+          background: `
+            radial-gradient(ellipse at bottom, var(--ember) 0%, rgba(196, 89, 43, 0.4) 40%, transparent 70%)
+          `,
+          animation: 'ember-flicker 2.5s ease-in-out infinite'
+        }} />
+      </div>
+
+      {/* Main Content */}
+      <div className="temple-container" style={{ position: 'relative', zIndex: 3 }}>
+        <div className="hero-content" style={{
+          textAlign: 'center',
+          maxWidth: '900px',
+          margin: '0 auto'
+        }}>
+          {/* Headlines */}
+          <h1 className="headline-huge" style={{ 
+            marginBottom: '20px',
+            animation: 'float 6s ease-in-out infinite'
+          }}>
+            {mockData.hero.headline}
+          </h1>
           
-          {/* Floating Energy Drops */}
-          <div className="energy-drops">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="energy-drop"
+          <p className="subline" style={{ 
+            marginBottom: '60px',
+            maxWidth: '600px',
+            margin: '0 auto 60px'
+          }}>
+            {mockData.hero.subline}
+          </p>
+
+          {/* Hero Can on Plinth */}
+          <div className="hero-plinth" style={{
+            position: 'relative',
+            margin: '60px auto',
+            maxWidth: '400px'
+          }}>
+            {/* Jade Plinth Base */}
+            <div className="plinth-base" style={{
+              width: '200px',
+              height: '40px',
+              background: `
+                linear-gradient(135deg, var(--jade) 0%, #1FC4AB 100%)
+              `,
+              margin: '0 auto',
+              borderRadius: '4px',
+              boxShadow: '0 10px 40px var(--jade-glow)',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              {/* Glowing Inlays */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '20%',
+                width: '8px',
+                height: '2px',
+                background: 'var(--gold)',
+                boxShadow: '0 0 10px var(--gold-glow)'
+              }} />
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                right: '20%',
+                width: '8px',
+                height: '2px',
+                background: 'var(--gold)',
+                boxShadow: '0 0 10px var(--gold-glow)'
+              }} />
+            </div>
+
+            {/* Hero Can */}
+            <div className="hero-can" style={{
+              position: 'relative',
+              marginTop: '-20px',
+              zIndex: 2
+            }}>
+              <img 
+                src={currentCan.image}
+                alt={currentCan.name}
                 style={{
-                  position: 'absolute',
-                  width: '4px',
-                  height: '20px',
-                  background: 'var(--brand-primary)',
-                  borderRadius: '50px',
-                  opacity: 0.8,
-                  animation: `dropFall 3s ease-in-out infinite ${i * 0.5}s`,
-                  left: `${20 + (i * 12)}%`,
-                  top: '-20px',
-                  boxShadow: '0 0 10px rgba(0, 255, 209, 0.8)'
+                  maxWidth: '300px',
+                  height: 'auto',
+                  filter: `drop-shadow(0 20px 40px ${currentCan.color}60)`,
+                  animation: 'float 4s ease-in-out infinite',
+                  transition: 'all 1s ease-in-out'
                 }}
               />
-            ))}
+
+              {/* Specular Sweep on Can */}
+              <div className="specular-sweep" style={{
+                position: 'absolute',
+                top: '10%',
+                left: 0,
+                width: '30px',
+                height: '80%',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
+                animation: 'specular-sweep 8s ease-in-out infinite',
+                borderRadius: '50px'
+              }} />
+
+              {/* Animated Droplets */}
+              {[...Array(4)].map((_, i) => (
+                <div
+                  key={i}
+                  className="droplet"
+                  style={{
+                    position: 'absolute',
+                    width: '4px',
+                    height: '8px',
+                    background: 'var(--moonlight)',
+                    borderRadius: '50% 50% 50% 0',
+                    left: `${30 + i * 20}%`,
+                    top: '20%',
+                    opacity: 0.8,
+                    animation: `droplet-fall ${2 + i * 0.5}s ease-in-out infinite ${i * 0.5}s`
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Can Selection Dots */}
+            <div className="can-selector" style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '12px',
+              marginTop: '30px'
+            }}>
+              {mockData.cans.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentCanIndex(index)}
+                  style={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: currentCanIndex === index ? 'var(--gold)' : 'rgba(185, 197, 214, 0.3)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: currentCanIndex === index ? '0 0 15px var(--gold-glow)' : 'none'
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="hero-ctas" style={{
+            display: 'flex',
+            gap: '20px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            marginTop: '60px'
+          }}>
+            <button 
+              className="btn-primary glow-gold"
+              onClick={scrollToGallery}
+            >
+              {mockData.hero.primaryCTA}
+            </button>
+            
+            <button 
+              className="btn-secondary"
+              onClick={scrollToNewsletter}
+            >
+              {mockData.hero.secondaryCTA}
+            </button>
           </div>
         </div>
       </div>
@@ -172,62 +341,21 @@ const HeroSection = () => {
         bottom: '40px',
         left: '50%',
         transform: 'translateX(-50%)',
-        color: 'var(--text-muted)',
-        fontSize: '14px',
-        animation: 'bounce 2s infinite'
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
+        zIndex: 3
       }}>
-        <div style={{ marginBottom: '8px' }}>Scroll to explore</div>
-        <div style={{ 
-          width: '2px', 
-          height: '30px', 
-          background: 'var(--brand-primary)', 
-          margin: '0 auto',
-          opacity: 0.6
+        <div className="body-small">Explore the temple</div>
+        <div style={{
+          width: '2px',
+          height: '30px',
+          background: 'var(--jade)',
+          opacity: 0.6,
+          animation: 'glow-pulse 2s ease-in-out infinite'
         }} />
       </div>
-
-      <style jsx>{`
-        @keyframes gradientShift {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-        
-        @keyframes canFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes dropFall {
-          0% { transform: translateY(-20px); opacity: 0; }
-          50% { opacity: 1; }
-          100% { transform: translateY(100px); opacity: 0; }
-        }
-        
-        @keyframes mobileFloat {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-        }
-        
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-          40% { transform: translateX(-50%) translateY(-10px); }
-          60% { transform: translateX(-50%) translateY(-5px); }
-        }
-        
-        @media (max-width: 768px) {
-          .hero-content {
-            padding: 0 20px;
-          }
-          
-          .display-huge {
-            font-size: 36px;
-          }
-          
-          .display-medium {
-            font-size: 20px;
-          }
-        }
-      `}</style>
     </section>
   );
 };
