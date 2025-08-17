@@ -166,7 +166,9 @@ const ShopSection = () => {
                         style={{
                           width: '120px',
                           height: 'auto',
-                          marginBottom: '15px'
+                          marginBottom: '15px',
+                          objectFit: 'contain',
+                          background: 'transparent'
                         }}
                       />
                       
