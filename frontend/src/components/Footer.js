@@ -120,7 +120,7 @@ const Footer = () => {
                     gap: '8px'
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.color = ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--tropical)', 'var(--extreme)'][index];
+                    e.target.style.color = ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--extreme-light)'][index];
                     e.target.style.transform = 'translateX(4px)';
                   }}
                   onMouseLeave={(e) => {
