@@ -274,7 +274,7 @@ const Footer = () => {
                 width: '12px',
                 height: '12px',
                 borderRadius: i % 2 === 0 ? '50%' : '2px',
-                background: ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--tropical)', 'var(--extreme)'][i % 5],
+                background: ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--extreme-light)'][i % 4],
                 animation: `float-gentle ${3 + i * 0.5}s ease-in-out infinite ${i * 0.2}s`,
                 transform: i % 2 === 0 ? 'none' : 'rotate(45deg)'
               }}
