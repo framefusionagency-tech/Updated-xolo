@@ -47,7 +47,7 @@ export const mockData = {
       description: "Maximum caffeine, maximum flavor. For when you need to get stuff done.",
       image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/dfsrpk5q_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_28_53%20PM.png",
       colorClass: "flavor-extreme",
-      accentColor: "#ef4444",
+      accentColor: "#ffd700",
       price: 3.49
     }
   ],
