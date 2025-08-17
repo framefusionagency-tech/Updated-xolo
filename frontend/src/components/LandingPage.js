@@ -41,6 +41,7 @@ const LandingPage = () => {
       <FlavorHighlights flavors={mockData.flavors} />
       <LifestyleSection />
       <JoinTribe />
+      <Toaster />
     </div>
   );
 };
