@@ -90,7 +90,9 @@ const FlavorSection = () => {
                     filter: hoveredFlavor === flavor.id 
                       ? 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.2))' 
                       : 'drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1))',
-                    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                    objectFit: 'contain',
+                    background: 'transparent'
                   }}
                 />
 
