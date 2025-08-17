@@ -160,7 +160,9 @@ const HeroSection = () => {
                   maxWidth: '320px',
                   height: 'auto',
                   filter: `drop-shadow(0 20px 40px ${currentFlavor?.accentColor}30)`,
-                  transition: 'all 0.8s ease-in-out'
+                  transition: 'all 0.8s ease-in-out',
+                  objectFit: 'contain',
+                  background: 'transparent'
                 }}
               />
             </div>
