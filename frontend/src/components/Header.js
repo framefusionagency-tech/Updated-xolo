@@ -124,8 +124,11 @@ const Header = () => {
 
       <style jsx>{`
         .logo:hover > div {
-          transform: rotate(0deg) !important;
           background: var(--banana) !important;
+        }
+        
+        .logo:hover > div svg {
+          color: var(--soft-black) !important;
         }
         
         @media (max-width: 768px) {
