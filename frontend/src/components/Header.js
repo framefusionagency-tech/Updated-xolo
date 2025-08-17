@@ -19,9 +19,9 @@ const Header = () => {
       left: 0,
       right: 0,
       zIndex: 1000,
-      background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+      background: scrolled ? 'rgba(250, 249, 246, 0.95)' : 'transparent',
       backdropFilter: scrolled ? 'blur(12px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--accent-grey)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(26, 26, 26, 0.1)' : 'none',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       padding: '16px 0'
     }}>
@@ -32,47 +32,39 @@ const Header = () => {
           justifyContent: 'space-between'
         }}>
           {/* XOLO Logo */}
-          <div className="logo" style={{
+          <div className="logo animate-wiggle" style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '12px'
+            gap: '12px',
+            cursor: 'pointer'
           }}>
-            {/* Xolo Dog Icon */}
+            {/* Playful XOLO Mark */}
             <div style={{
-              width: '40px',
-              height: '32px',
-              background: 'var(--text-dark)',
-              borderRadius: '16px 16px 8px 8px',
-              position: 'relative',
+              width: '44px',
+              height: '44px',
+              background: 'var(--soft-black)',
+              borderRadius: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transform: 'rotate(-5deg)',
               transition: 'all 0.3s ease'
             }}>
-              {/* Dog ears */}
-              <div style={{
-                position: 'absolute',
-                top: '-4px',
-                left: '8px',
-                width: '8px',
-                height: '8px',
-                background: 'var(--text-dark)',
-                borderRadius: '4px 4px 0 0',
-                transform: 'rotate(-10deg)'
-              }} />
-              <div style={{
-                position: 'absolute',
-                top: '-4px',
-                right: '8px',
-                width: '8px',
-                height: '8px',
-                background: 'var(--text-dark)',
-                borderRadius: '4px 4px 0 0',
-                transform: 'rotate(10deg)'
-              }} />
+              <span style={{
+                color: 'var(--white)',
+                fontSize: '18px',
+                fontWeight: '900',
+                fontFamily: 'var(--font-quirky)'
+              }}>
+                X
+              </span>
             </div>
             
             <span style={{
-              fontSize: '24px',
-              fontWeight: '800',
-              color: 'var(--text-dark)',
+              fontSize: '28px',
+              fontWeight: '700',
+              color: 'var(--soft-black)',
+              fontFamily: 'var(--font-quirky)',
               letterSpacing: '1px'
             }}>
               XOLO
@@ -87,33 +79,35 @@ const Header = () => {
           }}>
             <a href="#flavors" style={{
               textDecoration: 'none',
-              color: 'var(--text-medium)',
+              color: 'var(--charcoal)',
               fontWeight: '500',
+              fontFamily: 'var(--font-sans)',
               transition: 'color 0.3s ease'
             }}
-            onMouseEnter={(e) => e.target.style.color = 'var(--text-dark)'}
-            onMouseLeave={(e) => e.target.style.color = 'var(--text-medium)'}
+            onMouseEnter={(e) => e.target.style.color = 'var(--soft-black)'}
+            onMouseLeave={(e) => e.target.style.color = 'var(--charcoal)'}
             >
               Flavors
             </a>
             
-            <a href="#story" style={{
+            <a href="#shop" style={{
               textDecoration: 'none',
-              color: 'var(--text-medium)',
+              color: 'var(--charcoal)',
               fontWeight: '500',
+              fontFamily: 'var(--font-sans)',
               transition: 'color 0.3s ease'
             }}
-            onMouseEnter={(e) => e.target.style.color = 'var(--text-dark)'}
-            onMouseLeave={(e) => e.target.style.color = 'var(--text-medium)'}
+            onMouseEnter={(e) => e.target.style.color = 'var(--soft-black)'}
+            onMouseLeave={(e) => e.target.style.color = 'var(--charcoal)'}
             >
-              Story
+              Shop
             </a>
 
             <button className="btn-primary" style={{
               fontSize: '14px',
               padding: '12px 24px'
             }}>
-              Shop Now
+              Try XOLO
             </button>
           </nav>
 
@@ -123,7 +117,8 @@ const Header = () => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            fontSize: '24px'
+            fontSize: '24px',
+            color: 'var(--soft-black)'
           }}>
             ☰
           </button>
@@ -131,6 +126,11 @@ const Header = () => {
       </div>
 
       <style jsx>{`
+        .logo:hover > div {
+          transform: rotate(0deg) !important;
+          background: var(--banana) !important;
+        }
+        
         @media (max-width: 768px) {
           nav {
             display: none !important;
