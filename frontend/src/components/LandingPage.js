@@ -1,19 +1,21 @@
 import React from 'react';
+import Header from './Header';
 import HeroSection from './HeroSection';
-import CanGallery from './CanGallery';
-import BrandStory from './BrandStory';
-import MotionStrip from './MotionStrip';
+import FlavorShowcase from './FlavorShowcase';
+import LifestyleSection from './LifestyleSection';
+import HighlightSection from './HighlightSection';
 import Newsletter from './Newsletter';
 import Footer from './Footer';
 import { Toaster } from './ui/toaster';
 
 const LandingPage = () => {
   return (
-    <div className="midnight-temple">
+    <div className="brand-landing">
+      <Header />
       <HeroSection />
-      <CanGallery />
-      <BrandStory />
-      <MotionStrip />
+      <FlavorShowcase />
+      <LifestyleSection />
+      <HighlightSection />
       <Newsletter />
       <Footer />
       <Toaster />
