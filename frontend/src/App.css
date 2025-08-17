@@ -239,12 +239,8 @@ body {
   background: linear-gradient(135deg, var(--berry-light) 0%, var(--berry) 100%);
 }
 
-.flavor-tropical {
-  background: linear-gradient(135deg, var(--tropical-light) 0%, var(--tropical) 100%);
-}
-
 .flavor-extreme {
-  background: linear-gradient(135deg, var(--extreme-light) 0%, var(--extreme) 100%);
+  background: linear-gradient(135deg, var(--extreme) 0%, var(--extreme-light) 100%);
 }
 
 /* Animations */
