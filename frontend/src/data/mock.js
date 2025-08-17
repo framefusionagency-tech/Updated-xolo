@@ -2,7 +2,8 @@ export const mockData = {
   hero: {
     headline: "Fuel Your XOLO",
     subline: "Energy with flavor that actually tastes good.",
-    cta: "Shop Energy"
+    cta: "Shop Energy",
+    heroImage: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/inq1ghs0_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_26%20PM.png"
   },
   
   flavors: [
