@@ -132,7 +132,7 @@ const Footer = () => {
                     width: '8px',
                     height: '8px',
                     borderRadius: '50%',
-                    background: ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--tropical)', 'var(--extreme)'][index]
+                    background: ['var(--banana)', 'var(--citrus)', 'var(--berry)', 'var(--extreme-light)'][index]
                   }} />
                   {flavor}
                 </a>
