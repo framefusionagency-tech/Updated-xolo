@@ -4,6 +4,7 @@ import FlavorHighlights from './FlavorHighlights';
 import LifestyleSection from './LifestyleSection';
 import JoinTribe from './JoinTribe';
 import Header from './Header';
+import { Toaster } from './ui/toaster';
 import { mockData } from '../data/mock';
 
 const LandingPage = () => {
