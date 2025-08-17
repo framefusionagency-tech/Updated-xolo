@@ -38,26 +38,23 @@ const Header = () => {
             gap: '12px',
             cursor: 'pointer'
           }}>
-            {/* Playful XOLO Mark */}
+            {/* Clean X Icon */}
             <div style={{
               width: '44px',
               height: '44px',
               background: 'var(--soft-black)',
-              borderRadius: '12px',
+              borderRadius: '8px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transform: 'rotate(-5deg)',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              position: 'relative'
             }}>
-              <span style={{
-                color: 'var(--white)',
-                fontSize: '18px',
-                fontWeight: '900',
-                fontFamily: 'var(--font-quirky)'
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{
+                color: 'white'
               }}>
-                X
-              </span>
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
             
             <span style={{
