@@ -40,35 +40,18 @@ const Footer = () => {
               gap: '16px',
               marginBottom: '24px'
             }}>
-              {/* Clean X Icon */}
-              <div style={{
-                width: '52px',
-                height: '52px',
-                background: 'var(--banana)',
-                borderRadius: '10px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.3s ease'
-              }}
-              className="animate-wiggle"
-              >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{
-                  color: 'var(--soft-black)'
-                }}>
-                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              
-              <span style={{
-                fontSize: '32px',
-                fontWeight: '700',
-                color: 'var(--white)',
-                fontFamily: 'var(--font-quirky)',
-                letterSpacing: '1px'
-              }}>
-                XOLO
-              </span>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/46y5ba7g_logo.png"
+                alt="XOLO Logo"
+                style={{
+                  height: '52px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  filter: 'brightness(1.2)', // Brighten slightly for dark background
+                  transition: 'all 0.3s ease'
+                }}
+                className="animate-wiggle"
+              />
             </div>
 
             <p className="body-medium" style={{
