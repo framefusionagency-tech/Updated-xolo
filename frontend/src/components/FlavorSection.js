@@ -42,7 +42,7 @@ const FlavorSection = () => {
             maxWidth: '600px',
             margin: '0 auto'
           }}>
-            Five flavors that don't taste like they came from a lab
+            Four flavors that don't taste like they came from a lab
           </p>
         </div>
 
