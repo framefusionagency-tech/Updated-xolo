@@ -38,34 +38,17 @@ const Header = () => {
             gap: '12px',
             cursor: 'pointer'
           }}>
-            {/* Clean X Icon */}
-            <div style={{
-              width: '44px',
-              height: '44px',
-              background: 'var(--soft-black)',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              position: 'relative'
-            }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{
-                color: 'white'
-              }}>
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            
-            <span style={{
-              fontSize: '28px',
-              fontWeight: '700',
-              color: 'var(--soft-black)',
-              fontFamily: 'var(--font-quirky)',
-              letterSpacing: '1px'
-            }}>
-              XOLO
-            </span>
+            {/* Use the provided logo image */}
+            <img 
+              src="https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/46y5ba7g_logo.png"
+              alt="XOLO Logo"
+              style={{
+                height: '44px',
+                width: 'auto',
+                objectFit: 'contain',
+                transition: 'all 0.3s ease'
+              }}
+            />
           </div>
 
           {/* Navigation */}
@@ -123,12 +106,8 @@ const Header = () => {
       </div>
 
       <style jsx>{`
-        .logo:hover > div {
-          background: var(--banana) !important;
-        }
-        
-        .logo:hover > div svg {
-          color: var(--soft-black) !important;
+        .logo:hover img {
+          transform: scale(1.05);
         }
         
         @media (max-width: 768px) {

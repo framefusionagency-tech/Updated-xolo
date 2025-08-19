@@ -3,7 +3,7 @@ export const mockData = {
     headline: "Fuel Your XOLO",
     subline: "Energy with flavor that actually tastes good.",
     cta: "Shop Energy",
-    heroImage: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/inq1ghs0_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_26%20PM.png"
+    heroImage: "https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/uqhiev9a_Berry%20rush.png"
   },
   
   flavors: [
@@ -13,7 +13,7 @@ export const mockData = {
       shortName: "Banana",
       tagline: "smooth operator",
       description: "Creamy banana meets clean energy. No weird aftertaste, just smooth power.",
-      image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/inq1ghs0_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_26%20PM.png",
+      image: "https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/2lalwkzv_Banana%20shock.png",
       colorClass: "flavor-banana",
       accentColor: "#ffdc5e",
       price: 2.99
@@ -24,7 +24,7 @@ export const mockData = {
       shortName: "Citrus",
       tagline: "wake up call",
       description: "Zesty citrus punch that kicks in fast. Perfect for those 'I need energy now' moments.",
-      image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/kglchi4p_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_24%20PM.png",
+      image: "https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/xwuj0ix8_citrus%20blast.png",
       colorClass: "flavor-citrus",
       accentColor: "#ff6b35",
       price: 2.99
@@ -35,7 +35,7 @@ export const mockData = {
       shortName: "Berry",
       tagline: "berry good vibes",
       description: "Mixed berries with a hint of mischief. Sweet, tart, and surprisingly refreshing.",
-      image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/6uoe3wiy_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_31_22%20PM.png",
+      image: "https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/uqhiev9a_Berry%20rush.png",
       colorClass: "flavor-berry",
       accentColor: "#8b5cf6",
       price: 2.99
@@ -46,7 +46,7 @@ export const mockData = {
       shortName: "Extreme",
       tagline: "no chill",
       description: "Maximum caffeine, maximum flavor. For when you need to get stuff done.",
-      image: "https://customer-assets.emergentagent.com/job_power-tribe/artifacts/dfsrpk5q_ChatGPT%20Image%20Aug%2017%2C%202025%2C%2011_28_53%20PM.png",
+      image: "https://customer-assets.emergentagent.com/job_brand-design-journey/artifacts/sp2z6j0y_Extreme%20Rush.png",
       colorClass: "flavor-extreme",
       accentColor: "#ffd700",
       price: 3.49
